@@ -6,7 +6,7 @@ SystemUser::SystemUser()
     this->GID = 0;
     this->UID = 0;
     this->Name = "";
-    this->Locked = Unknown;
+    this->Login = Unknown;
     this->Shell = "";
     this->Root = No;
 }
@@ -20,15 +20,19 @@ SystemUser::SystemUser(const SystemUser& other)
 {
     this->GID = other.GID;
     this->UID = other.UID;
-    this->Locked = other.Locked;
+    this->Login = other.Login;
     this->Shell = other.Shell;
     this->Name = other.Name;
     this->Root = other.Root;
 }
 
-Property SystemUser::IsLocked()
+Property SystemUser::IsAbleToLog()
 {
-    return this->Locked;
+    if (this->Shell == "/bin/false" || this->Shell == "/usr/sbin/nologin")
+    {
+        return No;
+    }
+    return this->Login;
 }
 
 Property SystemUser::IsRoot()

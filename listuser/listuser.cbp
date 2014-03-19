@@ -12,7 +12,9 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
+					<Add option="-std=c++11" />
 					<Add option="-g" />
+					<Add directory="include" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -22,6 +24,8 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add option="-std=c++11" />
+					<Add directory="include" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -34,11 +38,13 @@
 		</Compiler>
 		<Unit filename="include/Configuration.hpp" />
 		<Unit filename="include/Passwd.hpp" />
+		<Unit filename="include/ShadowDB.hpp" />
 		<Unit filename="include/SystemUser.hpp" />
 		<Unit filename="include/Terminal.hpp" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Configuration.cpp" />
 		<Unit filename="src/Passwd.cpp" />
+		<Unit filename="src/ShadowDB.cpp" />
 		<Unit filename="src/SystemUser.cpp" />
 		<Unit filename="src/Terminal.cpp" />
 		<Extensions>

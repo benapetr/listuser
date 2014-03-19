@@ -2,6 +2,8 @@
 
 void Passwd::Retrieve(std::vector<SystemUser> *ul)
 {
+    // read /etc/shadow
+    ShadowDB::Init();
     // open /etc/passwd
     std::ifstream infile("/etc/passwd");
     for(std::string line; getline(infile, line);)
@@ -10,11 +12,13 @@ void Passwd::Retrieve(std::vector<SystemUser> *ul)
         std::vector<std::string> items = Passwd::split(line, ':');
         // create new instance of user
         SystemUser user;
-        if (items.size() > 3)
+        if (items.size() > 6)
         {
             user.Name = items[0];
             user.UID = std::stoi(items[2]);
             user.GID = std::stoi(items[3]);
+            user.Login = ShadowDB::IsLogin(user.Name);
+            user.Shell = items[6];
         }
 
         ul->push_back(user);

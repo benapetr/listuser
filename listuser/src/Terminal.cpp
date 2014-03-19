@@ -45,20 +45,20 @@ std::string Terminal::p2s(Property property)
 
 void Terminal::PrintUsers(std::vector<SystemUser> user)
 {
-    int c = 0;
+    unsigned int c = 0;
     if (user.size() == 0)
     {
         Write("There are no users on this system");
         return;
     }
     Write("+--------------------+-----------+----------+--------+---------------+");
-    Write("|Username:           |Is root: * | Locked:  + UID:   +  Groups:      |");
+    Write("|Username:           |Is root: * |Login:    |UID:    |Groups:        |");
     Write("+--------------------+-----------+----------+--------+---------------+");
-    while (c < (int)user.size())
+    while (c < user.size())
     {
         Write("|" + Resize(user[c].Name, 20) +
               "|" + Resize(p2s(user[c].IsRoot()), 11) +
-              "|" + Resize(p2s(user[c].IsLocked()), 10) +
+              "|" + Resize(p2s(user[c].IsAbleToLog()), 10) +
               "|" + Resize(i2s(user[c].GetUID()), 8) +
               "|" + Resize(i2s(user[c].GetGID()), 15) + "|"
               );

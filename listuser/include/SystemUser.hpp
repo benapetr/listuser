@@ -16,7 +16,7 @@ class SystemUser
         SystemUser();
         virtual ~SystemUser();
         SystemUser(const SystemUser& other);
-        Property IsLocked();
+        Property IsAbleToLog();
         Property IsRoot();
         int GetUID();
         int GetGID();
@@ -25,7 +25,7 @@ class SystemUser
         Property Root;
         int UID;
         int GID;
-        Property Locked;
+        Property Login;
     protected:
     private:
 

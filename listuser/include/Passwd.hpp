@@ -5,6 +5,7 @@
 #include <sstream>
 #include <vector>
 #include "../include/SystemUser.hpp"
+#include "../include/ShadowDB.hpp"
 
 class Passwd
 {
