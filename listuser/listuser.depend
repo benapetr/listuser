@@ -1,15 +1,39 @@
 # depslib dependency file v1.0
-1395219855 source:/home/petanb/Documents/listuser/listuser/main.cpp
+1395234660 source:/home/petanb/Documents/listuser/listuser/main.cpp
 	<iostream>
+	<vector>
 	"include/SystemUser.hpp"
+	"include/Passwd.hpp"
 	"include/Terminal.hpp"
 
-1395219806 /home/petanb/Documents/listuser/listuser/include/SystemUser.hpp
-
-1395220013 /home/petanb/Documents/listuser/listuser/include/Terminal.hpp
-	<iostream>
+1395234684 /home/petanb/Documents/listuser/listuser/include/SystemUser.hpp
 	<string>
 
-1395220029 source:/home/petanb/Documents/listuser/listuser/src/SystemUser.cpp
+1395234832 /home/petanb/Documents/listuser/listuser/include/Terminal.hpp
+	<iostream>
+	<list>
+	<sstream>
+	<string>
+	<vector>
+	"../include/SystemUser.hpp"
+
+1395235059 source:/home/petanb/Documents/listuser/listuser/src/SystemUser.cpp
+	"../include/SystemUser.hpp"
+
+1395233072 source:/home/petanb/Documents/listuser/listuser/src/Terminal.cpp
+	"../include/Terminal.hpp"
+
+1395221549 source:/home/petanb/Documents/listuser/listuser/src/Configuration.cpp
+	"../include/Configuration.hpp"
+
+1395221532 /home/petanb/Documents/listuser/listuser/include/Configuration.hpp
+
+1395232462 source:/home/petanb/Documents/listuser/listuser/src/Passwd.cpp
+	"../include/Passwd.hpp"
+
+1395232457 /home/petanb/Documents/listuser/listuser/include/Passwd.hpp
+	<fstream>
+	<sstream>
+	<vector>
 	"../include/SystemUser.hpp"
 

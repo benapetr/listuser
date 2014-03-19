@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<ActiveTarget name="Debug" />
+	<File name="include/Configuration.hpp" open="1" top="0" tabpos="6">
+		<Cursor position="52" topLine="0" />
+	</File>
+	<File name="include/Passwd.hpp" open="1" top="0" tabpos="8">
+		<Cursor position="0" topLine="0" />
+	</File>
+	<File name="include/SystemUser.hpp" open="1" top="0" tabpos="4">
+		<Cursor position="269" topLine="0" />
+	</File>
+	<File name="include/Terminal.hpp" open="1" top="0" tabpos="2">
+		<Cursor position="82" topLine="0" />
+	</File>
+	<File name="main.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="283" topLine="0" />
+	</File>
+	<File name="src/Configuration.cpp" open="1" top="0" tabpos="7">
+		<Cursor position="43" topLine="0" />
+	</File>
+	<File name="src/Passwd.cpp" open="1" top="0" tabpos="9">
+		<Cursor position="21" topLine="0" />
+	</File>
+	<File name="src/SystemUser.cpp" open="1" top="1" tabpos="5">
+		<Cursor position="350" topLine="0" />
+	</File>
+	<File name="src/Terminal.cpp" open="1" top="0" tabpos="3">
+		<Cursor position="149" topLine="0" />
+	</File>
+</CodeBlocks_layout_file>
