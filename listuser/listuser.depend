@@ -1,0 +1,15 @@
+# depslib dependency file v1.0
+1395219855 source:/home/petanb/Documents/listuser/listuser/main.cpp
+	<iostream>
+	"include/SystemUser.hpp"
+	"include/Terminal.hpp"
+
+1395219806 /home/petanb/Documents/listuser/listuser/include/SystemUser.hpp
+
+1395220013 /home/petanb/Documents/listuser/listuser/include/Terminal.hpp
+	<iostream>
+	<string>
+
+1395220029 source:/home/petanb/Documents/listuser/listuser/src/SystemUser.cpp
+	"../include/SystemUser.hpp"
+
