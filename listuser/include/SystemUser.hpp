@@ -2,6 +2,7 @@
 #define SYSTEMUSER_H
 
 #include <string>
+#include <grp.h>
 
 enum Property
 {
@@ -20,6 +21,7 @@ class SystemUser
         Property IsRoot();
         int GetUID();
         int GetGID();
+        void RetrieveGroups();
         std::string Name;
         std::string Shell;
         Property Root;
@@ -28,7 +30,10 @@ class SystemUser
         Property Login;
     protected:
     private:
-
+        //! List of all groups that are later obtained using system fc
+        gid_t *Groups;
+        //! Size of the list returned by system fc
+        int GroupsSize;
 };
 
 #endif // SYSTEMUSER_H

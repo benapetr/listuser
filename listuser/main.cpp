@@ -14,12 +14,12 @@ int main(int argc, char *argv[])
         delete t;
         return 0;
     }
+    delete t;
     // fetch the list of all users in the system
     vector<SystemUser> Users;
     // load the list of users with all records provided by passwd
     Passwd::Retrieve(&Users);
     Terminal::Write("Listing of all users in the system:");
     Terminal::PrintUsers(Users);
-    delete t;
     return 0;
 }

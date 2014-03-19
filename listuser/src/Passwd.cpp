@@ -19,6 +19,7 @@ void Passwd::Retrieve(std::vector<SystemUser> *ul)
             user.GID = std::stoi(items[3]);
             user.Login = ShadowDB::IsLogin(user.Name);
             user.Shell = items[6];
+            user.RetrieveGroups();
         }
 
         ul->push_back(user);
