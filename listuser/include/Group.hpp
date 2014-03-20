@@ -8,24 +8,21 @@
 //MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //GNU General Public License for more details.
 
-#ifndef PASSWD_H
-#define PASSWD_H
+#ifndef GROUP_H
+#define GROUP_H
 
-#include <fstream>
-#include <sstream>
-#include <string>
 #include <vector>
-#include "../include/SystemUser.hpp"
-#include "../include/GroupData.hpp"
-#include "../include/ShadowDB.hpp"
+#include <string>
 
-//! Interface to read /etc/passwd
-class Passwd
+class Group
 {
     public:
-        static void Retrieve(std::vector<SystemUser> *ul);
-    protected:
-    private:
+        Group(int Gid);
+        Group(const Group& g);
+        ~Group();
+        int GID;
+        std::string GroupName;
+        std::vector<std::string> Members;
 };
 
-#endif // PASSWD_H
+#endif // GROUP_H

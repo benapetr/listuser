@@ -1,3 +1,13 @@
+//This program is free software: you can redistribute it and/or modify
+//it under the terms of the GNU General Public License as published by
+//the Free Software Foundation, either version 3 of the License, or
+//(at your option) any later version.
+
+//This program is distributed in the hope that it will be useful,
+//but WITHOUT ANY WARRANTY; without even the implied warranty of
+//MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//GNU General Public License for more details.
+
 #include "../include/Terminal.hpp"
 
 void Terminal::Write(std::string text)
@@ -51,20 +61,20 @@ void Terminal::PrintUsers(std::vector<SystemUser> user)
         Write("There are no users on this system");
         return;
     }
-    Write("+--------------------+-----------+----------+--------+---------------+");
-    Write("|Username:           |Is root: * |Login:    |UID:    |Groups:        |");
-    Write("+--------------------+-----------+----------+--------+---------------+");
+    Write("+--------------------+-----------+----------+--------+---------------------+");
+    Write("|Username:           |Is root: * |Login:    |UID:    |Groups:              |");
+    Write("+--------------------+-----------+----------+--------+---------------------+");
     while (c < user.size())
     {
         Write("|" + Resize(user[c].Name, 20) +
               "|" + Resize(p2s(user[c].IsRoot()), 11) +
               "|" + Resize(p2s(user[c].IsAbleToLog()), 10) +
               "|" + Resize(i2s(user[c].GetUID()), 8) +
-              "|" + Resize(i2s(user[c].GetGID()), 15) + "|"
+              "|" + Resize(user[c].GroupsString(), 21) + "|"
               );
         c++;
     }
-    Write("+--------------------+-----------+----------+--------+---------------+");
+    Write("+--------------------+-----------+----------+--------+---------------------+");
     Write(" * This property is based on user ID as well as SUDO policies,\n"\
           "   proper detection of this property requires this tool to be\n"\
           "   run with superuser privileges");

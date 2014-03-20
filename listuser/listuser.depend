@@ -1,16 +1,17 @@
 # depslib dependency file v1.0
-1395241068 source:/home/petanb/Documents/listuser/listuser/main.cpp
+1395318690 source:/home/petanb/Documents/listuser/listuser/main.cpp
 	<iostream>
 	<vector>
 	"include/SystemUser.hpp"
 	"include/Passwd.hpp"
 	"include/Terminal.hpp"
 
-1395243735 /home/petanb/Documents/listuser/listuser/include/SystemUser.hpp
+1395321280 /home/petanb/Documents/listuser/listuser/include/SystemUser.hpp
 	<string>
-	<grp.h>
+	<vector>
+	"Group.hpp"
 
-1395234832 /home/petanb/Documents/listuser/listuser/include/Terminal.hpp
+1395318690 /home/petanb/Documents/listuser/listuser/include/Terminal.hpp
 	<iostream>
 	<list>
 	<sstream>
@@ -18,28 +19,31 @@
 	<vector>
 	"../include/SystemUser.hpp"
 
-1395244403 source:/home/petanb/Documents/listuser/listuser/src/SystemUser.cpp
+1395321510 source:/home/petanb/Documents/listuser/listuser/src/SystemUser.cpp
 	"../include/SystemUser.hpp"
 
-1395241024 source:/home/petanb/Documents/listuser/listuser/src/Terminal.cpp
+1395321541 source:/home/petanb/Documents/listuser/listuser/src/Terminal.cpp
 	"../include/Terminal.hpp"
 
-1395241024 source:/home/petanb/Documents/listuser/listuser/src/Configuration.cpp
+1395318690 source:/home/petanb/Documents/listuser/listuser/src/Configuration.cpp
 	"../include/Configuration.hpp"
 
-1395221532 /home/petanb/Documents/listuser/listuser/include/Configuration.hpp
+1395318690 /home/petanb/Documents/listuser/listuser/include/Configuration.hpp
 
-1395244082 source:/home/petanb/Documents/listuser/listuser/src/Passwd.cpp
+1395321236 source:/home/petanb/Documents/listuser/listuser/src/Passwd.cpp
 	"../include/Passwd.hpp"
+	"../include/StringTool.hpp"
 
-1395236916 /home/petanb/Documents/listuser/listuser/include/Passwd.hpp
+1395320757 /home/petanb/Documents/listuser/listuser/include/Passwd.hpp
 	<fstream>
 	<sstream>
+	<string>
 	<vector>
 	"../include/SystemUser.hpp"
+	"../include/GroupData.hpp"
 	"../include/ShadowDB.hpp"
 
-1395240653 /home/petanb/Documents/listuser/listuser/include/ShadowDB.hpp
+1395320888 /home/petanb/Documents/listuser/listuser/include/ShadowDB.hpp
 	<fstream>
 	<string>
 	<iostream>
@@ -47,6 +51,33 @@
 	<vector>
 	"../include/SystemUser.hpp"
 
-1395241024 source:/home/petanb/Documents/listuser/listuser/src/ShadowDB.cpp
-	"ShadowDB.hpp"
+1395320972 source:/home/petanb/Documents/listuser/listuser/src/ShadowDB.cpp
+	"../include/StringTool.hpp"
+	"../include/ShadowDB.hpp"
+
+1395320303 /home/petanb/Documents/listuser/listuser/include/Group.hpp
+	<vector>
+	<string>
+
+1395320241 source:/home/petanb/Documents/listuser/listuser/src/Group.cpp
+	"Group.hpp"
+
+1395321225 /home/petanb/Documents/listuser/listuser/include/GroupData.hpp
+	<string>
+	<fstream>
+	<sstream>
+	<vector>
+	"../include/Group.hpp"
+
+1395321722 source:/home/petanb/Documents/listuser/listuser/src/GroupData.cpp
+	"../include/GroupData.hpp"
+	"../include/StringTool.hpp"
+
+1395321007 /home/petanb/Documents/listuser/listuser/include/StringTool.hpp
+	<string>
+	<vector>
+	<sstream>
+
+1395320991 source:/home/petanb/Documents/listuser/listuser/src/StringTool.cpp
+	"StringTool.hpp"
 

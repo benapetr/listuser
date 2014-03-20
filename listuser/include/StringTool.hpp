@@ -8,24 +8,19 @@
 //MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //GNU General Public License for more details.
 
-#ifndef PASSWD_H
-#define PASSWD_H
 
-#include <fstream>
-#include <sstream>
+#ifndef STRINGTOOL_H
+#define STRINGTOOL_H
+
 #include <string>
 #include <vector>
-#include "../include/SystemUser.hpp"
-#include "../include/GroupData.hpp"
-#include "../include/ShadowDB.hpp"
+#include <sstream>
 
-//! Interface to read /etc/passwd
-class Passwd
+class StringTool
 {
     public:
-        static void Retrieve(std::vector<SystemUser> *ul);
-    protected:
-    private:
+        static std::vector<std::string> &split(const std::string &s, char delim, std::vector<std::string> &elems);
+        static std::vector<std::string> split(const std::string &s, char delim);
 };
 
-#endif // PASSWD_H
+#endif // STRINGTOOL_H

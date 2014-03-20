@@ -37,14 +37,20 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="include/Configuration.hpp" />
+		<Unit filename="include/Group.hpp" />
+		<Unit filename="include/GroupData.hpp" />
 		<Unit filename="include/Passwd.hpp" />
 		<Unit filename="include/ShadowDB.hpp" />
+		<Unit filename="include/StringTool.hpp" />
 		<Unit filename="include/SystemUser.hpp" />
 		<Unit filename="include/Terminal.hpp" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Configuration.cpp" />
+		<Unit filename="src/Group.cpp" />
+		<Unit filename="src/GroupData.cpp" />
 		<Unit filename="src/Passwd.cpp" />
 		<Unit filename="src/ShadowDB.cpp" />
+		<Unit filename="src/StringTool.cpp" />
 		<Unit filename="src/SystemUser.cpp" />
 		<Unit filename="src/Terminal.cpp" />
 		<Extensions>

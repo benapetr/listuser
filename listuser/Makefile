@@ -40,9 +40,9 @@ OBJDIR_RELEASE = obj/Release
 DEP_RELEASE = 
 OUT_RELEASE = bin/Release/listuser
 
-OBJ_DEBUG = $(OBJDIR_DEBUG)/main.o $(OBJDIR_DEBUG)/src/Configuration.o $(OBJDIR_DEBUG)/src/Passwd.o $(OBJDIR_DEBUG)/src/ShadowDB.o $(OBJDIR_DEBUG)/src/SystemUser.o $(OBJDIR_DEBUG)/src/Terminal.o
+OBJ_DEBUG = $(OBJDIR_DEBUG)/main.o $(OBJDIR_DEBUG)/src/Terminal.o $(OBJDIR_DEBUG)/src/SystemUser.o $(OBJDIR_DEBUG)/src/StringTool.o $(OBJDIR_DEBUG)/src/ShadowDB.o $(OBJDIR_DEBUG)/src/Passwd.o $(OBJDIR_DEBUG)/src/GroupData.o $(OBJDIR_DEBUG)/src/Group.o $(OBJDIR_DEBUG)/src/Configuration.o
 
-OBJ_RELEASE = $(OBJDIR_RELEASE)/main.o $(OBJDIR_RELEASE)/src/Configuration.o $(OBJDIR_RELEASE)/src/Passwd.o $(OBJDIR_RELEASE)/src/ShadowDB.o $(OBJDIR_RELEASE)/src/SystemUser.o $(OBJDIR_RELEASE)/src/Terminal.o
+OBJ_RELEASE = $(OBJDIR_RELEASE)/main.o $(OBJDIR_RELEASE)/src/Terminal.o $(OBJDIR_RELEASE)/src/SystemUser.o $(OBJDIR_RELEASE)/src/StringTool.o $(OBJDIR_RELEASE)/src/ShadowDB.o $(OBJDIR_RELEASE)/src/Passwd.o $(OBJDIR_RELEASE)/src/GroupData.o $(OBJDIR_RELEASE)/src/Group.o $(OBJDIR_RELEASE)/src/Configuration.o
 
 all: debug release
 
@@ -63,20 +63,29 @@ out_debug: before_debug $(OBJ_DEBUG) $(DEP_DEBUG)
 $(OBJDIR_DEBUG)/main.o: main.cpp
 	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c main.cpp -o $(OBJDIR_DEBUG)/main.o
 
-$(OBJDIR_DEBUG)/src/Configuration.o: src/Configuration.cpp
-	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c src/Configuration.cpp -o $(OBJDIR_DEBUG)/src/Configuration.o
-
-$(OBJDIR_DEBUG)/src/Passwd.o: src/Passwd.cpp
-	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c src/Passwd.cpp -o $(OBJDIR_DEBUG)/src/Passwd.o
-
-$(OBJDIR_DEBUG)/src/ShadowDB.o: src/ShadowDB.cpp
-	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c src/ShadowDB.cpp -o $(OBJDIR_DEBUG)/src/ShadowDB.o
+$(OBJDIR_DEBUG)/src/Terminal.o: src/Terminal.cpp
+	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c src/Terminal.cpp -o $(OBJDIR_DEBUG)/src/Terminal.o
 
 $(OBJDIR_DEBUG)/src/SystemUser.o: src/SystemUser.cpp
 	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c src/SystemUser.cpp -o $(OBJDIR_DEBUG)/src/SystemUser.o
 
-$(OBJDIR_DEBUG)/src/Terminal.o: src/Terminal.cpp
-	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c src/Terminal.cpp -o $(OBJDIR_DEBUG)/src/Terminal.o
+$(OBJDIR_DEBUG)/src/StringTool.o: src/StringTool.cpp
+	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c src/StringTool.cpp -o $(OBJDIR_DEBUG)/src/StringTool.o
+
+$(OBJDIR_DEBUG)/src/ShadowDB.o: src/ShadowDB.cpp
+	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c src/ShadowDB.cpp -o $(OBJDIR_DEBUG)/src/ShadowDB.o
+
+$(OBJDIR_DEBUG)/src/Passwd.o: src/Passwd.cpp
+	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c src/Passwd.cpp -o $(OBJDIR_DEBUG)/src/Passwd.o
+
+$(OBJDIR_DEBUG)/src/GroupData.o: src/GroupData.cpp
+	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c src/GroupData.cpp -o $(OBJDIR_DEBUG)/src/GroupData.o
+
+$(OBJDIR_DEBUG)/src/Group.o: src/Group.cpp
+	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c src/Group.cpp -o $(OBJDIR_DEBUG)/src/Group.o
+
+$(OBJDIR_DEBUG)/src/Configuration.o: src/Configuration.cpp
+	$(CXX) $(CFLAGS_DEBUG) $(INC_DEBUG) -c src/Configuration.cpp -o $(OBJDIR_DEBUG)/src/Configuration.o
 
 clean_debug: 
 	rm -f $(OBJ_DEBUG) $(OUT_DEBUG)
@@ -99,20 +108,29 @@ out_release: before_release $(OBJ_RELEASE) $(DEP_RELEASE)
 $(OBJDIR_RELEASE)/main.o: main.cpp
 	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c main.cpp -o $(OBJDIR_RELEASE)/main.o
 
-$(OBJDIR_RELEASE)/src/Configuration.o: src/Configuration.cpp
-	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c src/Configuration.cpp -o $(OBJDIR_RELEASE)/src/Configuration.o
-
-$(OBJDIR_RELEASE)/src/Passwd.o: src/Passwd.cpp
-	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c src/Passwd.cpp -o $(OBJDIR_RELEASE)/src/Passwd.o
-
-$(OBJDIR_RELEASE)/src/ShadowDB.o: src/ShadowDB.cpp
-	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c src/ShadowDB.cpp -o $(OBJDIR_RELEASE)/src/ShadowDB.o
+$(OBJDIR_RELEASE)/src/Terminal.o: src/Terminal.cpp
+	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c src/Terminal.cpp -o $(OBJDIR_RELEASE)/src/Terminal.o
 
 $(OBJDIR_RELEASE)/src/SystemUser.o: src/SystemUser.cpp
 	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c src/SystemUser.cpp -o $(OBJDIR_RELEASE)/src/SystemUser.o
 
-$(OBJDIR_RELEASE)/src/Terminal.o: src/Terminal.cpp
-	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c src/Terminal.cpp -o $(OBJDIR_RELEASE)/src/Terminal.o
+$(OBJDIR_RELEASE)/src/StringTool.o: src/StringTool.cpp
+	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c src/StringTool.cpp -o $(OBJDIR_RELEASE)/src/StringTool.o
+
+$(OBJDIR_RELEASE)/src/ShadowDB.o: src/ShadowDB.cpp
+	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c src/ShadowDB.cpp -o $(OBJDIR_RELEASE)/src/ShadowDB.o
+
+$(OBJDIR_RELEASE)/src/Passwd.o: src/Passwd.cpp
+	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c src/Passwd.cpp -o $(OBJDIR_RELEASE)/src/Passwd.o
+
+$(OBJDIR_RELEASE)/src/GroupData.o: src/GroupData.cpp
+	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c src/GroupData.cpp -o $(OBJDIR_RELEASE)/src/GroupData.o
+
+$(OBJDIR_RELEASE)/src/Group.o: src/Group.cpp
+	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c src/Group.cpp -o $(OBJDIR_RELEASE)/src/Group.o
+
+$(OBJDIR_RELEASE)/src/Configuration.o: src/Configuration.cpp
+	$(CXX) $(CFLAGS_RELEASE) $(INC_RELEASE) -c src/Configuration.cpp -o $(OBJDIR_RELEASE)/src/Configuration.o
 
 clean_release: 
 	rm -f $(OBJ_RELEASE) $(OUT_RELEASE)

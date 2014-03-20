@@ -1,8 +1,19 @@
+//This program is free software: you can redistribute it and/or modify
+//it under the terms of the GNU General Public License as published by
+//the Free Software Foundation, either version 3 of the License, or
+//(at your option) any later version.
+
+//This program is distributed in the hope that it will be useful,
+//but WITHOUT ANY WARRANTY; without even the implied warranty of
+//MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//GNU General Public License for more details.
+
 #ifndef SYSTEMUSER_H
 #define SYSTEMUSER_H
 
 #include <string>
-#include <grp.h>
+#include <vector>
+#include "Group.hpp"
 
 enum Property
 {
@@ -21,19 +32,16 @@ class SystemUser
         Property IsRoot();
         int GetUID();
         int GetGID();
-        void RetrieveGroups();
+        std::string GroupsString();
         std::string Name;
         std::string Shell;
         Property Root;
         int UID;
         int GID;
+        std::vector<Group> Groups;
         Property Login;
     protected:
     private:
-        //! List of all groups that are later obtained using system fc
-        gid_t *Groups;
-        //! Size of the list returned by system fc
-        int GroupsSize;
 };
 
 #endif // SYSTEMUSER_H
