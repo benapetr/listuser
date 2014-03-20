@@ -25,8 +25,65 @@ Terminal::Terminal(int c, char *v[])
     }
 }
 
+bool Terminal::ProcessChar(char x)
+{
+    switch (x)
+    {
+        case 'h':
+            Terminal::DisplayHelp();
+            return false;
+    }
+    return true;
+}
+
+void Terminal::DiplayVersion()
+{
+    Write("listuser version 1.0.0");
+}
+
+void Terminal::DisplayHelp()
+{
+    Write("Usage: listuser [options]\n\n"\
+          "Display a list of all users that exist in this system, including their\n"\
+          "properties, such as if this user account is able to login to this system\n"\
+          "or, if such user can become root using sudo. Some of the features are only\n"\
+          "supported when the tool is started as superuser.\n\n"\
+          "Optional parameters:\n"\
+          "  --help|-h: Display this help\n"\
+          "  --version: Display version\n"\
+          "This program is open source, licensed under GNU GPL v 3. "\
+          "Source code is located at https://github.com/benapetr/listuser");
+}
+
 bool Terminal::Parse()
 {
+    unsigned int x = 0;
+    while (x < this->Parameters.size())
+    {
+        std::string parameter = this->Parameters[x];
+        x++;
+        if (parameter.length() > 1 && parameter[0] == '-' && parameter[1] != '-')
+        {
+            // this is -fdsg like parameter
+            unsigned int i = 1;
+            while (i < parameter.length())
+            {
+                if (!Terminal::ProcessChar(parameter[i]))
+                {
+                    return false;
+                }
+                i++;
+            }
+        } else if (parameter == "--version")
+        {
+            Terminal::DiplayVersion();
+            return false;
+        } else if (parameter == "--help")
+        {
+            Terminal::DisplayHelp();
+            return false;
+        }
+    }
     return true;
 }
 

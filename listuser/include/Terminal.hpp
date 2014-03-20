@@ -12,7 +12,6 @@
 #define TERMINAL_H
 
 #include <iostream>
-#include <list>
 #include <sstream>
 #include <string>
 #include <vector>
@@ -31,7 +30,10 @@ class Terminal
         static std::string b2s(bool text);
         static std::string p2s(Property property);
         static std::string i2s(int x);
-        std::list<std::string> Parameters;
+        static bool ProcessChar(char x);
+        static void DiplayVersion();
+        static void DisplayHelp();
+        std::vector<std::string> Parameters;
 };
 
 #endif // TERMINAL_H

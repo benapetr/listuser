@@ -11,9 +11,8 @@
 	<vector>
 	"Group.hpp"
 
-1395318690 /home/petanb/Documents/listuser/listuser/include/Terminal.hpp
+1395323467 /home/petanb/Documents/listuser/listuser/include/Terminal.hpp
 	<iostream>
-	<list>
 	<sstream>
 	<string>
 	<vector>
@@ -22,7 +21,7 @@
 1395321510 source:/home/petanb/Documents/listuser/listuser/src/SystemUser.cpp
 	"../include/SystemUser.hpp"
 
-1395321541 source:/home/petanb/Documents/listuser/listuser/src/Terminal.cpp
+1395323907 source:/home/petanb/Documents/listuser/listuser/src/Terminal.cpp
 	"../include/Terminal.hpp"
 
 1395318690 source:/home/petanb/Documents/listuser/listuser/src/Configuration.cpp
@@ -69,7 +68,7 @@
 	<vector>
 	"../include/Group.hpp"
 
-1395321722 source:/home/petanb/Documents/listuser/listuser/src/GroupData.cpp
+1395321858 source:/home/petanb/Documents/listuser/listuser/src/GroupData.cpp
 	"../include/GroupData.hpp"
 	"../include/StringTool.hpp"
 
