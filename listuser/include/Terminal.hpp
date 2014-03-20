@@ -15,7 +15,9 @@
 #include <sstream>
 #include <string>
 #include <vector>
+#include <sys/ioctl.h>
 #include "../include/SystemUser.hpp"
+#include "../include/Configuration.hpp"
 
 class Terminal
 {

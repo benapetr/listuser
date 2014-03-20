@@ -1,7 +1,8 @@
 # depslib dependency file v1.0
-1395318690 source:/home/petanb/Documents/listuser/listuser/main.cpp
+1395325949 source:/home/petanb/Documents/listuser/listuser/main.cpp
 	<iostream>
 	<vector>
+	<sys/ioctl.h>
 	"include/SystemUser.hpp"
 	"include/Passwd.hpp"
 	"include/Terminal.hpp"
@@ -11,23 +12,25 @@
 	<vector>
 	"Group.hpp"
 
-1395323467 /home/petanb/Documents/listuser/listuser/include/Terminal.hpp
+1395325949 /home/petanb/Documents/listuser/listuser/include/Terminal.hpp
 	<iostream>
 	<sstream>
 	<string>
 	<vector>
+	<sys/ioctl.h>
 	"../include/SystemUser.hpp"
+	"../include/Configuration.hpp"
 
 1395321510 source:/home/petanb/Documents/listuser/listuser/src/SystemUser.cpp
 	"../include/SystemUser.hpp"
 
-1395323907 source:/home/petanb/Documents/listuser/listuser/src/Terminal.cpp
+1395324258 source:/home/petanb/Documents/listuser/listuser/src/Terminal.cpp
 	"../include/Terminal.hpp"
 
-1395318690 source:/home/petanb/Documents/listuser/listuser/src/Configuration.cpp
+1395325868 source:/home/petanb/Documents/listuser/listuser/src/Configuration.cpp
 	"../include/Configuration.hpp"
 
-1395318690 /home/petanb/Documents/listuser/listuser/include/Configuration.hpp
+1395325969 /home/petanb/Documents/listuser/listuser/include/Configuration.hpp
 
 1395321236 source:/home/petanb/Documents/listuser/listuser/src/Passwd.cpp
 	"../include/Passwd.hpp"

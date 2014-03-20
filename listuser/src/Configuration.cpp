@@ -10,3 +10,4 @@
 
 #include "../include/Configuration.hpp"
 
+unsigned short Configuration::Width = 0;

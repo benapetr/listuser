@@ -10,6 +10,7 @@
 
 #include <iostream>
 #include <vector>
+#include <sys/ioctl.h>
 #include "include/SystemUser.hpp"
 #include "include/Passwd.hpp"
 #include "include/Terminal.hpp"

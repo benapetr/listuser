@@ -9,6 +9,8 @@
 //GNU General Public License for more details.
 
 #include "../include/Terminal.hpp"
+#include <stdio.h>
+#include <unistd.h>
 
 void Terminal::Write(std::string text)
 {
@@ -17,6 +19,10 @@ void Terminal::Write(std::string text)
 
 Terminal::Terminal(int c, char *v[])
 {
+    // get the size of terminal
+    struct winsize w;
+    ioctl(STDOUT_FILENO, TIOCGWINSZ, &w);
+    Configuration::Width = w.ws_col;
     int i = 0;
     while (i < c)
     {
@@ -118,20 +124,37 @@ void Terminal::PrintUsers(std::vector<SystemUser> user)
         Write("There are no users on this system");
         return;
     }
-    Write("+--------------------+-----------+----------+--------+---------------------+");
-    Write("|Username:           |Is root: * |Login:    |UID:    |Groups:              |");
-    Write("+--------------------+-----------+----------+--------+---------------------+");
+    // get extra width
+    int width = (int)Configuration::Width;
+    std::string ws = "";
+    if ((width - 76) > 0)
+    {
+        // we are on huge terminal, let's print it wide
+        width = width - 76;
+        int x = 0;
+        while (x < width)
+        {
+            ws += "-";
+            x++;
+        }
+    } else
+    {
+        width = 0;
+    }
+    Write("+--------------------+-----------+-------+------+--------------------------" + ws + "+");
+    Write("|Username:           |Is root: * |Login: |UID:  |" + Resize("Groups:", 26 + width) + "|");
+    Write("+--------------------+-----------+-------+------+--------------------------" + ws +"+");
     while (c < user.size())
     {
         Write("|" + Resize(user[c].Name, 20) +
               "|" + Resize(p2s(user[c].IsRoot()), 11) +
-              "|" + Resize(p2s(user[c].IsAbleToLog()), 10) +
-              "|" + Resize(i2s(user[c].GetUID()), 8) +
-              "|" + Resize(user[c].GroupsString(), 21) + "|"
+              "|" + Resize(p2s(user[c].IsAbleToLog()), 7) +
+              "|" + Resize(i2s(user[c].GetUID()), 6) +
+              "|" + Resize(user[c].GroupsString(), 26 + width) + "|"
               );
         c++;
     }
-    Write("+--------------------+-----------+----------+--------+---------------------+");
+    Write("+--------------------+-----------+-------+------+--------------------------" + ws + "+");
     Write(" * This property is based on user ID as well as SUDO policies,\n"\
           "   proper detection of this property requires this tool to be\n"\
           "   run with superuser privileges");

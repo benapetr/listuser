@@ -15,6 +15,7 @@
 class Configuration
 {
     public:
+        static unsigned short Width;
     protected:
     private:
 };
