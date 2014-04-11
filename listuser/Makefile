@@ -140,3 +140,5 @@ clean_release:
 
 .PHONY: before_debug after_debug clean_debug before_release after_release clean_release
 
+install:
+	build/install.sh

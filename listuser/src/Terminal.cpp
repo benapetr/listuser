@@ -44,13 +44,13 @@ bool Terminal::ProcessChar(char x)
 
 void Terminal::DiplayVersion()
 {
-    Write("listuser version 1.0.0");
+    Write("listuser version 1.0.1");
 }
 
 void Terminal::DisplayHelp()
 {
     Write("Usage: listuser [options]\n\n"\
-          "Display a list of all users that exist in this system, including their\n"\
+          "Display a list of all local users that exist in this system, including their\n"\
           "properties, such as if this user account is able to login to this system\n"\
           "or, if such user can become root using sudo. Some of the features are only\n"\
           "supported when the tool is started as superuser.\n\n"\
@@ -141,20 +141,20 @@ void Terminal::PrintUsers(std::vector<SystemUser> user)
     {
         width = 0;
     }
-    Write("+--------------------+-----------+-------+------+--------------------------" + ws + "+");
-    Write("|Username:           |Is root: * |Login: |UID:  |" + Resize("Groups:", 26 + width) + "|");
-    Write("+--------------------+-----------+-------+------+--------------------------" + ws +"+");
+    Write("+--------------------+---------+-------+------+----------------------------" + ws + "+");
+    Write("|Username:           |Is root:*|Login: |UID:  |" + Resize("Groups:", 28 + width) + "|");
+    Write("+--------------------+---------+-------+------+----------------------------" + ws +"+");
     while (c < user.size())
     {
         Write("|" + Resize(user[c].Name, 20) +
-              "|" + Resize(p2s(user[c].IsRoot()), 11) +
+              "|" + Resize(p2s(user[c].IsRoot()), 9) +
               "|" + Resize(p2s(user[c].IsAbleToLog()), 7) +
               "|" + Resize(i2s(user[c].GetUID()), 6) +
-              "|" + Resize(user[c].GroupsString(), 26 + width) + "|"
+              "|" + Resize(user[c].GroupsString(), 28 + width) + "|"
               );
         c++;
     }
-    Write("+--------------------+-----------+-------+------+--------------------------" + ws + "+");
+    Write("+--------------------+---------+-------+------+----------------------------" + ws + "+");
     Write(" * This property is based on user ID as well as SUDO policies,\n"\
           "   proper detection of this property requires this tool to be\n"\
           "   run with superuser privileges");

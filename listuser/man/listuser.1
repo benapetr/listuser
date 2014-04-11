@@ -1,0 +1,18 @@
+.\" Man page for pidgeon
+.\" Licensed under BSD-like License.
+.\" Created by Petr Bena
+.\"
+.TH listuser "User Manual"
+.SH NAME
+listuser
+\- show a listing of all local user accounts together with some properties
+
+.SH DESCRIPTION
+listuser display a list of all local users (eg. these in /etc/passwd) together with some properties, which you would normally need to fetch from multiple places. It for example, detect whether user is able (or allowed) to login to system (by checking if they have valid password, home and login shell).
+
+If you start listuser with superuser privileges it also read /etc/sudoers and check what permissions this user has, which are then displayed in a list too.
+.PP
+.SH "AUTHOR"
+Petr Bena
+.br
+Project home page: http://github.com/benapetr/listuser
