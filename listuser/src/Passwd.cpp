@@ -8,6 +8,7 @@
 //MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //GNU General Public License for more details.
 
+#include <stdexcept>
 #include "../include/Passwd.hpp"
 #include "../include/StringTool.hpp"
 
@@ -17,10 +18,15 @@ void Passwd::Retrieve(std::vector<SystemUser> *ul)
     ShadowDB::Init();
     // read /etc/group
     GroupData::Init();
-    // open /etc/passwd
-    std::ifstream infile("/etc/passwd");
-    for(std::string line; getline(infile, line);)
+    FILE *users = popen("getent passwd", "r");
+    if (!users)
+        throw std::runtime_error("Unable to read passwd file");
+    char * t = NULL;
+    size_t len = 0;
+    ssize_t read;
+    while ((read = getline(&t, &len, users)) != -1)
     {
+        std::string line(t);
         // split everything by colon
         std::vector<std::string> items = StringTool::split(line, ':');
         // create new instance of user
@@ -37,4 +43,5 @@ void Passwd::Retrieve(std::vector<SystemUser> *ul)
 
         ul->push_back(user);
     }
+    pclose(users);
 }

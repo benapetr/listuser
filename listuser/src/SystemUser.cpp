@@ -18,7 +18,7 @@ SystemUser::SystemUser()
     this->Name = "";
     this->Login = Unknown;
     this->Shell = "";
-    this->Root = No;
+    this->Root = Unknown;
 }
 
 SystemUser::~SystemUser()
