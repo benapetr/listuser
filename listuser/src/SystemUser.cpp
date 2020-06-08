@@ -50,7 +50,7 @@ std::string SystemUser::GroupsString()
     return list;
 }
 
-Property SystemUser::IsAbleToLog()
+Property SystemUser::CanLogin()
 {
     if (this->Shell == "/bin/false" || this->Shell == "/usr/sbin/nologin")
     {

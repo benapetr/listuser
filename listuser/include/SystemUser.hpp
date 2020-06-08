@@ -28,7 +28,7 @@ class SystemUser
         SystemUser();
         virtual ~SystemUser();
         SystemUser(const SystemUser& other);
-        Property IsAbleToLog();
+        Property CanLogin();
         Property IsRoot();
         int GetUID();
         int GetGID();

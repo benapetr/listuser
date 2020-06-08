@@ -148,7 +148,7 @@ void Terminal::PrintUsers(std::vector<SystemUser> user)
     {
         Write("|" + Resize(user[c].Name, 20) +
               "|" + Resize(p2s(user[c].IsRoot()), 9) +
-              "|" + Resize(p2s(user[c].IsAbleToLog()), 7) +
+              "|" + Resize(p2s(user[c].CanLogin()), 7) +
               "|" + Resize(i2s(user[c].GetUID()), 6) +
               "|" + Resize(user[c].GroupsString(), 28 + width) + "|"
               );
