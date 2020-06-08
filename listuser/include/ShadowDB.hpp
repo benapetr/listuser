@@ -11,10 +11,7 @@
 #ifndef SHADOWDB_H
 #define SHADOWDB_H
 
-#include <fstream>
 #include <string>
-#include <iostream>
-#include <sstream>
 #include <vector>
 #include "../include/SystemUser.hpp"
 

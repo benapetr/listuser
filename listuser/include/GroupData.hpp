@@ -12,8 +12,6 @@
 #define GROUPDATA_H
 
 #include <string>
-#include <fstream>
-#include <sstream>
 #include <vector>
 #include "../include/Group.hpp"
 

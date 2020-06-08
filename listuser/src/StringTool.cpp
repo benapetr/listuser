@@ -9,6 +9,7 @@
 //GNU General Public License for more details.
 
 #include "StringTool.hpp"
+#include <sstream>
 
 std::vector<std::string> &StringTool::split(const std::string &s, char delim, std::vector<std::string> &elems)
 {

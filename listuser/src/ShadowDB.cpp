@@ -10,6 +10,9 @@
 
 #include "../include/StringTool.hpp"
 #include "../include/ShadowDB.hpp"
+#include <sstream>
+#include <fstream>
+#include <iostream>
 
 bool ShadowDB::init = false;
 std::vector<ShadowUser> ShadowDB::Users;
@@ -27,11 +30,11 @@ ShadowUser::ShadowUser(const ShadowUser& user)
 
 void ShadowDB::Init()
 {
-    if (init)
-    {
+    if (ShadowDB::init)
         return;
-    }
-    init = true;
+
+    ShadowDB::init = true;
+    
     // read passwd file
     std::ifstream infile("/etc/shadow");
     for(std::string line; getline(infile, line);)

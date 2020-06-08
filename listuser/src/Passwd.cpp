@@ -8,9 +8,12 @@
 //MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 //GNU General Public License for more details.
 
-#include <stdexcept>
 #include "../include/Passwd.hpp"
 #include "../include/StringTool.hpp"
+#include <stdexcept>
+#include <fstream>
+#include <sstream>
+#include <string>
 
 void Passwd::Retrieve(std::vector<SystemUser> *ul)
 {
@@ -36,6 +39,7 @@ void Passwd::Retrieve(std::vector<SystemUser> *ul)
             user.Name = items[0];
             user.UID = std::stoi(items[2]);
             user.GID = std::stoi(items[3]);
+            user.Home = items[5];
             user.Login = ShadowDB::IsLogin(user.Name);
             user.Groups = GroupData::GetGroupsForUN(user.Name, user.GetGID());
             user.Shell = items[6];

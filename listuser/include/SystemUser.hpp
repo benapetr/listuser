@@ -29,12 +29,14 @@ class SystemUser
         virtual ~SystemUser();
         SystemUser(const SystemUser& other);
         Property CanLogin();
+        Property CanSSH();
         Property IsRoot();
         int GetUID();
         int GetGID();
         std::string GroupsString();
         std::string Name;
         std::string Shell;
+        std::string Home;
         Property Root;
         int UID;
         int GID;

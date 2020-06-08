@@ -10,6 +10,8 @@
 
 #include "../include/GroupData.hpp"
 #include "../include/StringTool.hpp"
+#include <fstream>
+#include <sstream>
 
 bool GroupData::loaded = false;
 std::vector<Group> GroupData::Groups;

@@ -11,9 +11,6 @@
 #ifndef PASSWD_H
 #define PASSWD_H
 
-#include <fstream>
-#include <sstream>
-#include <string>
 #include <vector>
 #include "../include/SystemUser.hpp"
 #include "../include/GroupData.hpp"

@@ -9,6 +9,10 @@
 //GNU General Public License for more details.
 
 #include "../include/SystemUser.hpp"
+#include <stdexcept>
+#include <fstream>
+#include <sstream>
+#include <unistd.h>
 
 SystemUser::SystemUser()
 {
@@ -18,6 +22,7 @@ SystemUser::SystemUser()
     this->Name = "";
     this->Login = Unknown;
     this->Shell = "";
+    this->Home = "";
     this->Root = Unknown;
 }
 
@@ -34,6 +39,7 @@ SystemUser::SystemUser(const SystemUser& other)
     this->Shell = other.Shell;
     this->Groups = other.Groups;
     this->Name = other.Name;
+    this->Home = other.Home;
     this->Root = other.Root;
 }
 
@@ -57,6 +63,40 @@ Property SystemUser::CanLogin()
         return No;
     }
     return this->Login;
+}
+
+Property SystemUser::CanSSH()
+{
+    std::string ssh_key_path = this->Home + "/.ssh/authorized_keys";
+
+    // Check if authorized_keys file exists
+    if (access(ssh_key_path.c_str(), F_OK) == -1)
+    {
+        // it doesn't exist
+        return No;
+    }
+
+    if (access(ssh_key_path.c_str(), R_OK) == -1)
+    {
+        // we can't read it
+        return Unknown;
+    }
+    
+    // Try to open it
+    // read passwd file
+    std::ifstream infile(ssh_key_path.c_str());
+    if (infile.fail())
+        return Unknown;
+        
+    for(std::string line; getline(infile, line);)
+    {
+        if (line.empty())
+            continue;
+        if (line[0] == '#')
+            continue;
+        return Yes;
+    }
+    return No;
 }
 
 Property SystemUser::IsRoot()

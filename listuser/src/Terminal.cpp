@@ -127,10 +127,10 @@ void Terminal::PrintUsers(std::vector<SystemUser> user)
     // get extra width
     int width = (int)Configuration::Width;
     std::string ws = "";
-    if ((width - 76) > 0)
+    if ((width - 85) > 0)
     {
         // we are on huge terminal, let's print it wide
-        width = width - 76;
+        width = width - 85;
         int x = 0;
         while (x < width)
         {
@@ -141,20 +141,21 @@ void Terminal::PrintUsers(std::vector<SystemUser> user)
     {
         width = 0;
     }
-    Write("+--------------------+---------+-------+------+----------------------------" + ws + "+");
-    Write("|Username:           |Is root:*|Login: |UID:  |" + Resize("Groups:", 28 + width) + "|");
-    Write("+--------------------+---------+-------+------+----------------------------" + ws +"+");
+    Write("+--------------------+---------+-------+---------+------+---------------------" + ws + "+");
+    Write("|Username:           |Is root:*|Login: |SSH key: |UID:  |" + Resize("Groups:", 21 + width) + "|");
+    Write("+--------------------+---------+-------+---------+------+---------------------" + ws +"+");
     while (c < user.size())
     {
         Write("|" + Resize(user[c].Name, 20) +
               "|" + Resize(p2s(user[c].IsRoot()), 9) +
               "|" + Resize(p2s(user[c].CanLogin()), 7) +
+              "|" + Resize(p2s(user[c].CanSSH()), 9) +
               "|" + Resize(i2s(user[c].GetUID()), 6) +
-              "|" + Resize(user[c].GroupsString(), 28 + width) + "|"
+              "|" + Resize(user[c].GroupsString(), 21 + width) + "|"
               );
         c++;
     }
-    Write("+--------------------+---------+-------+------+----------------------------" + ws + "+");
+    Write("+--------------------+---------+-------+---------+------+---------------------" + ws + "+");
     Write(" * This property is based on user ID as well as SUDO policies,\n"\
           "   proper detection of this property requires this tool to be\n"\
           "   run with superuser privileges");
