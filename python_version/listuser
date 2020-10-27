@@ -3,17 +3,27 @@
 # Created in 2020 by Petr Bena <petr@bena.rocks>
 
 import argparse
+import subprocess
 import os
 
 parser = argparse.ArgumentParser(description='Human friendly overview of system accounts')
 parser.add_argument('-b', '--built-in', action='store_true', help='Display also built-in accounts')
 parser.add_argument('-l', '--list', action='store_true', help='Show detailed listing, instead of single line output')
 parser.add_argument('-s', '--system', action='store_true', help='Show system users')
+parser.add_argument('--sudo', action='store_true', help='Check if users have sudo rights, requires root')
 
 args = parser.parse_args()
 
 builtins = [ 'bin', 'apache', 'squid', 'daemon', 'adm', 'lp', 'sync', 'mail', 'operator', 'games', 'ftp', 'nobody', 'dbus', 'abrt', 'polkitd', 'libstoragemgmt', 'rpc', 'tss', 'ntp', 'rpcuser', 'nfsnobody', 'pcp', 'postfix', 'sshd', 'oprofile', 'tcpdump',
              'saslauth', 'uucp', 'gopher', 'vcsa', 'haldaemon', 'insights', 'chrony', 'systemd-network', 'geoclue' ]
+
+def check_sudo(user):
+    out = subprocess.check_output(['sudo', '-l', '-n', '-U', user])
+    if (len(out.split("\n")) > 2):
+        return True
+    out = out.replace("\n", "")
+    return "is not allowed to run sudo" not in out
+
 
 with open('/etc/passwd') as passwd:
     lines = passwd.readlines()
@@ -38,16 +48,21 @@ with open('/etc/passwd') as passwd:
             locked_str = ''
             system_str = ''
             ssh_str = ''
+            sudo_str = ''
+            if (args.sudo and check_sudo(username)):
+                sudo_str = '[sudo]'
             if (has_ssh_keys):
                 ssh_str = "[SSH keys]"
             if (locked):
                 locked_str = "[locked]"
             if (system):
                 system_str = "[system]"
+            info = '%20s (%4s) %8s' % (username, uid, locked_str)
             if (args.system):
-                info = '%20s (%4s) %8s %8s %10s: %s' % (username, uid, locked_str, system_str, ssh_str, desc)
-            else:
-                info = '%20s (%4s) %8s %10s: %s' % (username, uid, locked_str, ssh_str, desc)
+                info = info + '%8s' % (system_str)
+            if (args.sudo):
+                info = info + '%6s' % (sudo_str)
+            info = info + '%10s: %s' % (ssh_str, desc)
             print(info)
         else:
             print(username),
