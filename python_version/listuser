@@ -1,0 +1,53 @@
+#!/usr/bin/env python
+
+# Created in 2020 by Petr Bena <petr@bena.rocks>
+
+import argparse
+import os
+
+parser = argparse.ArgumentParser(description='Human friendly overview of system accounts')
+parser.add_argument('-b', '--built-in', action='store_true', help='Display also built-in accounts')
+parser.add_argument('-l', '--list', action='store_true', help='Show detailed listing, instead of single line output')
+parser.add_argument('-s', '--system', action='store_true', help='Show system users')
+
+args = parser.parse_args()
+
+builtins = [ 'bin', 'apache', 'squid', 'daemon', 'adm', 'lp', 'sync', 'mail', 'operator', 'games', 'ftp', 'nobody', 'dbus', 'abrt', 'polkitd', 'libstoragemgmt', 'rpc', 'tss', 'ntp', 'rpcuser', 'nfsnobody', 'pcp', 'postfix', 'sshd', 'oprofile', 'tcpdump',
+             'saslauth', 'uucp', 'gopher', 'vcsa', 'haldaemon', 'insights', 'chrony', 'systemd-network', 'geoclue' ]
+
+with open('/etc/passwd') as passwd:
+    lines = passwd.readlines()
+    for l in lines:
+        l = l.replace("\n","")
+        ui = l.split(":")
+        username = ui[0]
+        uid = ui[2]
+        desc = ui[4]
+        home = ui[5]
+        shell = ui[6]
+        system = int(uid) < 1000
+        if (system and args.system != True):
+            continue
+        if (not desc):
+            desc = "[no description]"
+        if (args.built_in != True and username in builtins):
+            continue
+        if (args.list):
+            has_ssh_keys = os.path.exists(home + "/.ssh/authorized_keys")
+            locked = shell in [ '/sbin/nologin', '/bin/false' ]
+            locked_str = ''
+            system_str = ''
+            ssh_str = ''
+            if (has_ssh_keys):
+                ssh_str = "[SSH keys]"
+            if (locked):
+                locked_str = "[locked]"
+            if (system):
+                system_str = "[system]"
+            if (args.system):
+                info = '%20s (%4s) %8s %8s %10s: %s' % (username, uid, locked_str, system_str, ssh_str, desc)
+            else:
+                info = '%20s (%4s) %8s %10s: %s' % (username, uid, locked_str, ssh_str, desc)
+            print(info)
+        else:
+            print(username),
